@@ -13,14 +13,17 @@ def status():
     archiveReturnCode = process.returncode
     if archiveReturnCode != 0:
         print("git status fail")
-    else:      
-        if nothing in status:
-            if 'ahead' in status:
-                push()
-            else:
-                print('nothing to commit')
-        else:
+    else:
+        if 'Untracked' in status:
             add()
+        else:      
+            if nothing in status:
+                if 'ahead' in status:
+                    push()
+                else:
+                    print('nothing to commit')
+            else:
+                add()
 
 #添加工作区
 def add():
